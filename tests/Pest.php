@@ -30,6 +30,9 @@ expect()->extend('toBeOne', function () {
     return $this->toBe(1);
 });
 
+expect()->extend('toBeUuid', fn() =>
+    preg_match('/^[\w-]{36}$/', $this->value) === 1
+);
 /*
 |--------------------------------------------------------------------------
 | Functions
@@ -40,6 +43,10 @@ expect()->extend('toBeOne', function () {
 | global functions to help you to reduce the number of lines of code in your test files.
 |
 */
+
+pest()->browser()->inFirefox();
+pest()->browser()->timeout(10000);
+
 
 function something()
 {
